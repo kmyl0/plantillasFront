@@ -1,0 +1,72 @@
+<div class="container container-monitoreo">
+    <md-card>
+        <md-toolbar class="md-table-toolbar">
+            <div class="md-toolbar-tools">
+                <md-icon>grid_on</md-icon> <span>Monitoreo</span>
+                <div flex></div>
+                <md-button class="md-icon-button" ng-click="monitoreo.refrescarChart()">
+                    <md-tooltip>Actualizar</md-tooltip>
+                    <md-icon>refresh</md-icon>
+                </md-button>
+                <md-button class="md-icon-button btn-collapsed">
+                    <md-tooltip>Ocultar/Ver</md-tooltip>
+                    <md-icon>keyboard_arrow_down</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-card-content>
+
+            <div layout="column" layout-gt-sm>
+                <md-input-container>
+                    <label>Gráfico</label>
+                    <md-select ng-model="monitoreo.grafico" placeholder="Selecciona que grafico ver" ng-change="monitoreo.reiniciarChart()">
+                        <md-option ng-value="g" ng-repeat="g in monitoreo.graficos">{{g.nombre}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <label>Año</label>
+                    <md-select ng-model="monitoreo.anio" ng-change="monitoreo.refrescarChart()">
+                        <md-option ng-value="$index" ng-repeat="a in monitoreo.anios">{{a}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <label>Mes</label>
+                    <md-select ng-model="monitoreo.mes" ng-change="monitoreo.refrescarChart()">
+                        <md-option ng-value="$index" ng-repeat="m in monitoreo.meses">{{m}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="input-search" ng-if="monitoreo.grafico.cod==3">
+                    <label>Usuarios</label>
+                    <md-select ng-model="monitoreo.usuario" ng-change="monitoreo.refrescarChart()">
+                        <md-option ng-value="u.id_usuario" ng-repeat="u in monitoreo.usuarios | filter:monitoreo.usuario_buscar">
+                            {{u.usuario}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="input-search" ng-if="monitoreo.grafico.cod==3">
+                    <label>Nombres</label>
+                    <md-select ng-model="monitoreo.usuario" ng-change="monitoreo.refrescarChart()">
+                        <md-option ng-value="u.id_usuario" ng-repeat="u in monitoreo.usuarios | filter:monitoreo.usuario_buscar">
+                            {{u.nombres}} {{u.apellidos}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <div class="paginador" ng-if="monitoreo.grafico.cod!=0">
+                    <md-button ng-click="monitoreo.paginar('aa')" ng-disabled="monitoreo.page<=1"><md-icon>first_page</md-icon></md-button>
+                    <md-button  ng-click="monitoreo.paginar('a')" ng-disabled="monitoreo.page<=1"><md-icon>chevron_left</md-icon></md-button>
+                    <md-input-container >
+                        <label>Intervalo</label>
+                        <input ng-model="monitoreo.page_text" size="7" disabled>
+                    </md-input-container>
+                    <md-button ng-click="monitoreo.paginar('s')" ng-disabled="monitoreo.page*20>=monitoreo.page_tot"><md-icon>chevron_right</md-icon></md-button>
+                    <md-button ng-click="monitoreo.paginar('ss')" ng-disabled="monitoreo.page*20>=monitoreo.page_tot"><md-icon>last_page</md-icon></md-button>
+                </div>
+            </div>
+            <div layout layout-align="center start">
+                <chart-graph ancho="1000" alto="500" tipo="monitoreo.chart.tipo" datos="monitoreo.chart.datos" actualizar="monitoreo.chart.actualizar" reiniciar="monitoreo.chart.reiniciar" ></chart-graph>
+            </div>
+            <br>
+            <br>
+        </md-card-content>
+    </md-card>
+</div>

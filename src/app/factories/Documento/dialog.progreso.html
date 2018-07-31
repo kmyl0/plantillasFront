@@ -1,0 +1,45 @@
+<md-dialog aria-label="Ver progreso" class="formly-dialog formly-column-{{column}} dialog-progreso" style="max-width: 800px; width: 100%;" >
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2><md-icon>dashboard</md-icon> Progreso del documento</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" aria-label="Cerrar" ng-click="cerrar()">
+                <md-tooltip>Cerrar</md-tooltip>
+                <md-icon aria-label="Close dialog">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content class="md-dialog-content">
+        <timeline>
+            <timeline-event ng-repeat="it in data.datos">
+                <timeline-badge class="bg-{{it.bg_color}}">
+                    <md-icon aria-label="description">{{it.icon}}</md-icon>
+                    <md-tooltip>{{it.acc}}</md-tooltip>
+                </timeline-badge>
+                <timeline-panel>
+                    <timeline-heading>
+                        <h3>{{it.nombres}}</h3>
+                    </timeline-heading>
+                    <p>
+                        <span class="ap-text-{{it.bg_color}}">
+                            {{it.acc}} {{it.acc=='Sin respuesta'? 'desde ': ''}}
+                        </span>
+                        el {{it.fecha_mos}} a las {{it.hora_mos}}
+                    </p>
+                    <p ng-if="it.tipo_doc"> Documento: {{it.tipo_doc}}</p>
+                    <p ng-if="it.cite"> CITE: <span class="ap-cursor-pointer" ng-click="verDocumento(it.id_documento)">{{it.cite}}</span></p>
+                    <p ng-if="it.accion=='RECHAZADO'">{{it.observacion}}</p>
+                    <p ng-if="it.accion=='DERIVADO'">Proveído: {{it.observacion}}</p>
+                    <!-- <p ng-if="it.accion=='CREADO'">{{it.observacion}}</p> -->
+                </timeline-panel>
+            </timeline-event>
+        </timeline>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <div flex></div>
+        <md-button class="md-raised" ng-click="cerrar()">
+            <md-icon>check</md-icon>
+            <span>Cerrar</span>
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

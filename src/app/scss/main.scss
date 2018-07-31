@@ -1,0 +1,146 @@
+// 
+// BASE
+// 
+// body {
+//     background-color: #fff;
+//     margin: 0;
+// }
+
+// a {
+//     color: #0089d0;
+// }
+
+// a:hover {
+//     color: #00537c;
+// }
+
+// LAYOUT
+// 
+// #header { ... }
+// #footer { ... }
+// #sidebar { ... }
+// #main { ... }
+
+// MODULE
+// 
+// .module > h2 {
+//     padding: 5px;
+// }
+
+// .module span {
+//     padding: 25px;
+// }
+
+// STATE
+// 
+// .tab {
+//     background-color: blue;
+//     color: white;
+// }
+// .is-tab-active {
+//     background-color: white;
+//     color: black;
+// }
+
+// // visibility state
+// .is-visible {
+//     display: block;
+//     animation: fade 2s;
+// }
+
+// .is-hidden {
+//     display: none;
+//     animation: fade 2s reverse;
+// }
+
+// BREAKPOINTS & MEDIA QUERIES
+// 
+// /* breakpoints */
+// $phone-portrait:    320px;      
+// $phone-landscape:   480px;    
+// $tablet:            768px;  
+// $desktop-md:        1024px; 
+// $desktop-lg:        1140px; 
+
+// /* default layout */
+// .content {
+//     float: left;
+//     width: 75%;
+// }
+// .sidebar {
+//     float: right;
+//     width: 25%;
+// }
+
+// /* alternate state for layout on small screens */
+// @media screen and (max-width: $phone-landscape) {
+//     .content, .sidebar {
+//     float: none;
+//     width: auto;
+//     }
+// }
+
+// NAMING CONVENTION
+// 
+// /* Different modules */
+// .btn { ... }
+// .tab { ... }
+// .modal { ... }
+
+// /* Module with sub-modules & modifier */
+// .btn { ... }
+// .btn-small { ... }                // - sub-module
+// .btn-large { ... }                // - sub-module
+// .btn-large--orange { ... }        // -- modifier
+// For state rules, the prefix is- is used:
+
+// /* General state rules (placed in state.scss) */
+// .is-active { ... }
+// .is-disabled { ... }
+// .is-pressed { ... }
+// .is-visible { ... }
+// .is-hidden { ... }
+// .is-collpased { ... }
+// .is-selected { ... }
+
+// /* Modules with general state */
+// .btn.is-active { ... }
+// .tab.is-collapsed { ... }
+
+// /* Element-specific state rules (placed in specific module) */
+// .is-btn-active { ... }
+// .is-tab-collapsed { ... }
+// Layout rules use the l- prefix:
+
+// /* Layout rules */
+// .l-flipped { float: left; }
+// .l-fixed { width: 850px; }
+// .l-grid { ... }
+// .l-inline { display: inline; }
+// .l-stacked { display: block; }
+
+
+// @import 'vendor/_others.scss';
+@import 'base/_variables.scss';
+// @import 'base/_functions.scss';
+// @import 'base/_mixins.scss';
+// @import 'base/_base.scss';
+// @import 'base/_font-icon.scss';
+// @import 'base/_helpers.scss';
+// @import 'layout/_grid.scss';
+// @import 'layout/_header.scss';
+// @import 'layout/_sidebar.scss';
+// @import 'layout/_main.scss';
+// @import 'layout/_footer.scss';
+// @import 'module/_nav.scss';
+// @import 'module/_card.scss';
+// @import 'module/_buttons.scss';
+// @import 'module/_forms.scss';
+// @import 'module/_tabs.scss';
+// @import 'module/_accordions.scss';
+// @import 'module/_table.scss';
+// @import 'module/_modals.scss';
+// @import 'module/_calendar.scss';
+// @import 'module/_toast.scss';
+// @import 'state/_state.scss';
+// @import 'hacks/_shame.scss';
